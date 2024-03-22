@@ -1,60 +1,30 @@
-# assignmentproject
+Follow below steps to build and run the project correctly.
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+1. Running the application in dev mode
+    You can run your application in dev mode that enables live coding using:
+    ./mvnw compile quarkus:dev   OR
+     mvn compile quarkus:dev
 
-If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
+2. (Optional) The application can be packaged using:
+   ./mvnw package  OR
+    mvn package
 
-## Running the application in dev mode
+3. Update below properties related to JWT keys in application.properties file to your location.
+    smallrye.jwt.sign.key.location={your location}
+    mp.jwt.verify.publickey.location={your location}
 
-You can run your application in dev mode that enables live coding using:
-```shell script
-./mvnw compile quarkus:dev
-```
+    Due to time constraint, I was not able to create different module i.e. one to generate token and other to acsess pricate API.
+    To access POST method you must have valid JWT token which will get from /token endpoint.
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at http://localhost:8080/q/dev/.
+4.  Update below datasource details/properties required to access mariadb database in the application.properties file.
+    quarkus.datasource.db-kind = mariadb
+    quarkus.datasource.username = {your_db_username}
+    quarkus.datasource.password = {your_db_password}
+    quarkus.datasource.jdbc.url = {your_jdbc_url}
 
-## Packaging and running the application
+You are good to go.
+Access the url with below link
 
-The application can be packaged using:
-```shell script
-./mvnw package
-```
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+http://{hostname}:{port}/q/swagger-ui
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
-
-If you want to build an _über-jar_, execute the following command:
-```shell script
-./mvnw package -Dquarkus.package.type=uber-jar
-```
-
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
-
-## Creating a native executable
-
-You can create a native executable using: 
-```shell script
-./mvnw package -Dnative
-```
-
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
-
-You can then execute your native executable with: `./target/assignmentproject-1.0.0-SNAPSHOT-runner`
-
-If you want to learn more about building native executables, please consult https://quarkus.io/guides/maven-tooling.
-
-## Related Guides
-
-- RESTEasy Classic ([guide](https://quarkus.io/guides/resteasy)): REST endpoint framework implementing Jakarta REST and more
-
-## Provided Code
-
-### RESTEasy JAX-RS
-
-Easily start your RESTful Web Services
-
-[Related guide section...](https://quarkus.io/guides/getting-started#the-jax-rs-resources)
+For ex. http://localhost:8080/q/swagger-ui
