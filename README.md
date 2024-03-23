@@ -35,3 +35,6 @@ Access the url with below link
 http://{hostname}:{port}/q/swagger-ui
 
 For ex. http://localhost:8080/q/swagger-ui
+
+
+NOTE: Supported filter criteria for /list endpoint are {=, !=, >, <, >=, <=}
