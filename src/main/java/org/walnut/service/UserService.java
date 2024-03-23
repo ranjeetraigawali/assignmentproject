@@ -24,7 +24,7 @@ public class UserService {
     }
 
     public List<User> getUsers(String sortOrder, String sortColumn, int pageSize,
-                               int pageNumber, String filterColumn, String filterValue) throws Exception {
+                               int pageNumber, String filterColumn, String filterValue, String filterCriteria) throws Exception {
         List<User> retList = null ;
 
         //Get result list based on provided criteria
@@ -39,14 +39,14 @@ public class UserService {
                         catch (NumberFormatException ne){
                             throw new Exception("Wrong filter criteria provided.");
                         }
-                        return retList = userRepository.getByFilter(filterColumn, id);
+                        return retList = userRepository.getByFilter(filterColumn, id, filterCriteria);
                     }
-                    return  retList = userRepository.getByFilter(filterColumn, filterValue);
+                    return  retList = userRepository.getByFilter(filterColumn, filterValue, filterCriteria);
                 }
             }
         }
         else {
-            return  retList = userRepository.getByFilter(filterColumn, filterValue);
+            return  retList = userRepository.getByFilter(filterColumn, filterValue, filterCriteria);
         }
 
         //Get result list based on the sorting

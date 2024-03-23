@@ -42,10 +42,11 @@ public class UserResource {
             @QueryParam("pageSize") @DefaultValue("50") int pageSize,
             @QueryParam("pageNumber") @DefaultValue("1") int pageNumber,
             @QueryParam("filterColumn") @DefaultValue("id") String filterColumn,
-            @QueryParam("filterValue") @DefaultValue("0") String filterValue) {
+            @QueryParam("filterValue") @DefaultValue("0") String filterValue,
+            @QueryParam("filterCriteria") @DefaultValue("=") String filterCriteria){
 
         try{
-            List<User> userList = userService.getUsers(sortOrder, sortColumn, pageSize, pageNumber, filterColumn, filterValue);
+            List<User> userList = userService.getUsers(sortOrder, sortColumn, pageSize, pageNumber, filterColumn, filterValue, filterCriteria);
             if(!userList.isEmpty()){
                 return Response.ok(userList).build();
             }

@@ -13,10 +13,10 @@ public class UserRepository implements PanacheRepository<User> {
         return  list("order by "+sortColumn+" "+sortOrder);
     }
 
-    public List<User> getByFilter(String filterColumn, Object filterValue) {
+    public List<User> getByFilter(String filterColumn, Object filterValue, String filterCriteria) {
         if (filterValue instanceof String)
-                return list(filterColumn + "='" + filterValue + "'");
-        return  list(filterColumn +"="+ filterValue);
+                return list(filterColumn + filterCriteria + "'" + filterValue + "'");
+        return  list(filterColumn + filterCriteria + filterValue);
     }
 
     public List<User> getByPagination(int fromIndex, int pageSize) {
