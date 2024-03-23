@@ -1,7 +1,6 @@
 Follow below steps to build and run the project correctly.
 
-1. Running the application in dev mode
-    You can run your application in dev mode that enables live coding using:
+1. You can run your application in dev mode that enables live coding using:
     ./mvnw compile quarkus:dev   OR
      mvn compile quarkus:dev
 
@@ -21,6 +20,8 @@ Follow below steps to build and run the project correctly.
     quarkus.datasource.username = {your_db_username}
     quarkus.datasource.password = {your_db_password}
     quarkus.datasource.jdbc.url = {your_jdbc_url}
+
+5.  Execute resources/assignmentprojectddl.sql file on db to have user table and it's requence ready.
 
 You are good to go.
 Access the url with below link
